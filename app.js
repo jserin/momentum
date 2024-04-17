@@ -1,25 +1,30 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = loginForm.querySelector("input");
+const greeting = document.querySelector("#greeting");
 
-function handleTitleClick() {
-    // const currentColor = h1.style.color;
-    // let newColor;
-    // if (currentColor === "blue") {
-    //     newColor = "tomato";
-    // } else {
-    //     newColor = "blue";
-    // }
-    // h1.style.color = newColor;
-    
-    // toggle 사용 전
-    // const clickedClass = "active";
-    // if (h1.classList.contains(clickedClass)) {
-    //     h1.classList.remove(clickedClass);
-    // } else {
-    //     h1.classList.add(clickedClass);
-    // }
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
-    // toggle 사용
-    h1.classList.toggle("active");
+function onLoginSubmit(event) {
+    event.preventDefault();
+
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+
+    paintGreetings(username);
 }
 
-h1.addEventListener("click", handleTitleClick);
+function paintGreetings(username) {
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreetings(savedUsername)
+}
