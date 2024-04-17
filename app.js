@@ -1,28 +1,20 @@
-const title = document.querySelector(".hello:first-child h1");
+const h1 = document.querySelector("div.hello:first-child h1");
 
 function handleTitleClick() {
-    title.style.color = "blue";
+    // const currentColor = h1.style.color;
+    // let newColor;
+    // if (currentColor === "blue") {
+    //     newColor = "tomato";
+    // } else {
+    //     newColor = "blue";
+    // }
+    // h1.style.color = newColor;
+    const clickedClass = "active";
+    if (h1.classList.contains(clickedClass)) {
+        h1.classList.remove(clickedClass);
+    } else {
+        h1.classList.add(clickedClass);
+    }
 }
 
-function handleMouseEnter() {
-    title.innerText = "Mouse is here!";
-}
-
-function handleMouseLeave() {
-    title.innerText = "Mouse is gone!";
-}
-
-function handleWindowRisize() {
-    document.body.style.background = "tomato";
-}
-
-function handleWindowCopy() {
-    alert("copier!");
-}
-
-title.addEventListener("click", handleTitleClick);
-title.addEventListener("mouseenter", handleMouseEnter);
-title.addEventListener("mouseleave", handleMouseLeave);
-
-window.addEventListener("resize", handleWindowRisize);
-window.addEventListener("copy", handleWindowCopy);
+h1.addEventListener("click", handleTitleClick);
