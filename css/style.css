@@ -1,3 +1,51 @@
+body {
+    margin: 0; padding: 0;
+    text-align: center;
+    color: white;
+}
+button {
+    padding: 0; margin: 0;
+    background-color: transparent;
+    border: none;
+}
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    overflow: hidden;
+}
+ul {
+    list-style: none;
+}
+input {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem; padding: 0.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 60%;
+    text-align: center;
+}
+.container {
+    width: 50%; padding: 3rem;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 2rem;
+}
+#clock {
+    font-size: 8rem;
+}
+#greeting {
+    font-size: 2.5rem;
+}
+
 .hidden {
     display: none;
 }
+

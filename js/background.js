@@ -1,12 +1,29 @@
-const images = [
-    "1.png", "2.png", "3.png", "4.png", "5.png"
-];
+const UNSPLASH_API_KEY = "OUAZ1zkJ1dCgvmmDOoebDJRUbla5g2iOOcl0m3_0UGY";
+const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}`;
 
-const chosenImage = images[Math.floor(Math.random() * images.length)];
+const savedBg = JSON.parse(localStorage.getItem("background"))[0];
+const today = new Date();
 
-// img 태그 생성, 속성 추가
-const bgImage = document.createElement("img");
-bgImage.src = `img/${chosenImage}`;
+function onLoad() {
+    if(savedBg === null || savedBg.date !== today.getDate()) {
+        fetch(unsplashUrl).then((response) => response.json())
+        .then((data) => {
+            const newBg = {
+                img: data.urls.raw,
+                date: today.getDate(),
+            }
+            localStorage.setItem("background", JSON.stringify(todaysBg));
+            paintBg(newBg.img);
+    });
+    } else {
+        paintBg(savedBg.img);
+    }
+}
 
-// html body에 이미지 추가
-document.body.appendChild(bgImage);
+function paintBg(url) {
+    const bgImage = document.createElement("img");
+    bgImage.src = url;
+    document.body.appendChild(bgImage);
+}
+
+window.addEventListener("load", onLoad);

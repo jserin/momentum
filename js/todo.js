@@ -24,7 +24,7 @@ function paintToDo(newTodo) {
     const span = document.createElement("span");
     const button = document.createElement("button");
     span.innerText = newTodo.text;
-    button.innerText = "❌";
+    button.innerText = "삭제";
 
     button.addEventListener("click", deleteTodo);
 
