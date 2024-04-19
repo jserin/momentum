@@ -1,7 +1,7 @@
 const UNSPLASH_API_KEY = "OUAZ1zkJ1dCgvmmDOoebDJRUbla5g2iOOcl0m3_0UGY";
 const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}`;
 
-const savedBg = JSON.parse(localStorage.getItem("background"))[0];
+const savedBg = JSON.parse(localStorage.getItem("background"));
 const today = new Date();
 
 function onLoad() {
@@ -12,7 +12,7 @@ function onLoad() {
                 img: data.urls.raw,
                 date: today.getDate(),
             }
-            localStorage.setItem("background", JSON.stringify(todaysBg));
+            localStorage.setItem("background", JSON.stringify(newBg));
             paintBg(newBg.img);
     });
     } else {

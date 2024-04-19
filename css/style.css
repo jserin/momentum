@@ -19,7 +19,24 @@ img {
     overflow: hidden;
 }
 ul {
+    width: 60%;
+    margin: 0 auto;
     list-style: none;
+    text-align: left;
+    padding-inline-start: 0;
+    li {
+        background: rgba(211, 211, 211, 0.3);
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+
+        button {
+            color: white;
+            margin-left: auto;
+            float: right;
+        }
+    }
+    
 }
 input {
     font-size: 1.5rem;
@@ -35,7 +52,7 @@ input {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(128, 128, 128, 0.1);
+    background: rgba(128, 128, 128, 0.2);
     border-radius: 2rem;
 }
 #clock {
@@ -43,6 +60,13 @@ input {
 }
 #greeting {
     font-size: 2.5rem;
+}
+#quote {
+    width: 100vh;
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translate(-50%, 0);
+    margin-bottom: 1rem;
 }
 
 .hidden {

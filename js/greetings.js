@@ -13,11 +13,17 @@ function onLoginSubmit(event) {
     loginForm.classList.add(HIDDEN_CLASSNAME);
 
     paintGreetings(username);
+    paintTodoInput();
 }
 
 function paintGreetings(username) {
     greeting.innerText = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+function paintTodoInput() {
+    const toDoArea = document.querySelector("#todo-box");
+    toDoArea.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
@@ -26,5 +32,6 @@ if (savedUsername === null) {
     loginForm.classList.remove(HIDDEN_CLASSNAME);
     loginForm.addEventListener("submit", onLoginSubmit);
 } else {
-    paintGreetings(savedUsername)
+    paintGreetings(savedUsername);
+    paintTodoInput();
 }
